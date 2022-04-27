@@ -1,11 +1,11 @@
 <template>
   <div id="main">
-  	<h3>Quotes</h3>
+  	<h3>Imyibutsa</h3>
   	<div>
   		<textarea v-model="quote"></textarea>
   	</div>
   	<div>
-  		<button v-on:click="addQuote">Add Quote</button>
+  		<button v-on:click="addQuote">Ongeramwo</button>
   	</div>
   </div>
 </template>

@@ -6,12 +6,12 @@
       <quotesLabel width="25%"
         v-for="(quote, position) in quotes"
         v-bind:position="position"
-        v-on:click.native="quotes.shift(position);">
+        v-on:click.native="e => remove(e, position)">
         {{ quote }}
       </quotesLabel>
     </div>
     <div class="info">
-      <span>info: Click on a Quote to delete it!</span>
+      <span>ehe nkwereke: ufyonze ku mwibutsa uba uwuhanaguye!</span>
     </div>
   </div>
 </template>
@@ -38,6 +38,13 @@ export default {
       if(this.quotes.length<10)
       this.quotes.push(quote);
     },
+    remove(event, position){
+      event.target.classList.add("hidden")
+      setTimeout(() => {
+        event.target.classList.remove("hidden")
+        this.quotes.splice(position, 1)
+      }, 1000)
+    }
   }
 };
 </script>
@@ -61,5 +68,9 @@ export default {
 }
 .quotes{
   margin-bottom: 10px;
+}
+.hidden{
+  opacity: 0;
+  transition: opacity 1s;
 }
 </style>
