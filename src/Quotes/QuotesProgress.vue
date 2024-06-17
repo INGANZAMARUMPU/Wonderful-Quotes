@@ -28,7 +28,7 @@ h1{
 }
 .progression{
 	height: 100%;
-	background-color: #48b;
+	background-color: var(--primary);
 	text-align: center;
 	color: white;
 	border-radius: 5px;

@@ -34,12 +34,12 @@ export default {
 }
 input{
 	flex-grow: 1;
-	border: 2px solid #48b;
+	border: 2px solid var(--primary);
 	border-radius: 3px;
 	padding: 0 20px;
 }
 button{
-	background-color: #48b;
+	background-color: var(--primary);
 	padding: 10px 30px;
 	color: white;
 	border-radius: 3px;

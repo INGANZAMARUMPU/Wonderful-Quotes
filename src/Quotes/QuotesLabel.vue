@@ -1,7 +1,7 @@
 <template>
 	<div v-bind:style="{width:width}">
 		<h3>
-			<span style="font-size: 3em;">"</span>
+			<span class="icon">"</span>
 			<slot>no text</slot>
 		  <div class="close" @click="e => $emit('close', e)">&times</div>
 		</h3>
@@ -20,12 +20,15 @@
   </script>
   <style scoped>
   h3{
-	  color: #7a7;
+	  color: var(--primary);
 	  font-style: italic;
-	  word-break: break-all;
 	  margin: 0;
 	  position: relative;
-	  background-color: #eee;
+	  background-color: #FAFAFA;
+	  padding: 40px 20px 20px 30px;
+  }
+  h3:hover{
+	background-color: #EEE;
   }
   .close{
 	  color: red;
@@ -36,6 +39,12 @@
   .close:hover{
 	  cursor: default;
 	  text-shadow: 0 0 10px red;
+  }
+  .icon{
+	top:10px;
+	left: 10px;
+	position: absolute;
+	font-size: 3em;
   }
   </style>
   

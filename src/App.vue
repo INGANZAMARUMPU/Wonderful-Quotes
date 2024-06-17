@@ -63,6 +63,12 @@ export default {
 </script>
 
 <style>
+:root{
+  --primary: #48b;
+  --primary-hover: #48b;
+  --danger: #A55;
+  --danger-hover: #FDD;
+}
 #app{
   width: 90%;
   max-width: 1000px;
@@ -73,13 +79,14 @@ export default {
 }
 h2{
   text-align: center;
+  color: var(--primary);
 }
 .info{
-  background-color: #ffdddd;
-  color: #aa5555;
+  background-color: var(--danger-hover);
+  color: var(--danger);
   padding-top: 1em;
   padding-bottom: 1em;
-  border: 1px solid #aa5555;
+  border: 1px solid var(--danger);
   border-radius: 3px;
   padding: 10px 40px 0 40px;
 }
