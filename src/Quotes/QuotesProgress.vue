@@ -1,6 +1,5 @@
 <template>
   <div>
-  	<h1>Imyibutsa imaze kuboneka</h1>
   	<div class="progress">
   		<div class="progression" v-bind:style="{width:computedWidth}">{{quotes.length}}/10</div>
   	</div>
@@ -22,7 +21,7 @@ h1{
 }
 .progress{
 	width: 100%;
-	height: 25px;
+	height: 15px;
 	background-color: lightgray;
 	margin : 10px 0;
 	border-radius: 5px;
@@ -32,7 +31,7 @@ h1{
 	background-color: #48b;
 	text-align: center;
 	color: white;
-	padding-top: 4px;
 	border-radius: 5px;
+	font-size: .8em;
 }
 </style>

@@ -1,35 +1,29 @@
 <template>
   <div id="app">
     <h2>IMYIBUTSA Y'IKIRUNDI</h2>
-    <quotes-progress v-bind:quotes="quotes"></quotes-progress>
+    <quotes-progress :quotes="quotes" v-if="quotes.length > 0"></quotes-progress>
+    <quotes-field @add_quote="pushQuote" @error="display_error"/>
+    <div class="info" v-show="!!error">
+      <div>Menya Neza:
+        <ul>
+          <li>Nta mwibutsa ugira amajambo ari musi y'abiri!</li>
+          <li>Ufyonze ku kamenyetso &times uba uhanaguye umwibutsa!</li>
+          <li>Usigaje gushiramwo imyibutsa {{ 10 - this.quotes.length }}</li>
+        </ul>
+      </div>
+    </div>
     <div class="quotes">
       <quotesLabel
         v-for="(quote, position) in quotes"
-        v-bind:position="position"
-        v-on:close="e => remove(e, position)">
+        :position="position"
+        @close="e => remove(e, position)">
         {{ quote }}
       </quotesLabel>
-    </div>
-    <div class="info">
-      <div>Menya Neza:
-        <ul>
-          <li>
-            Ntushobora gushiramwo umwibutsa ugaragara!
-          </li>
-          <li>
-            Ufyonze ku kamenyetso &times uba uhanaguye umwibutsa!
-          </li>
-          <li>
-            Usigaje gushiramwo imyibutsa {{ 10 - this.quotes.length }}
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import QuotesField from './Quotes/QuotesField.vue'
 import QuotesLabel from './Quotes/QuotesLabel.vue'
 import QuotesProgress from './Quotes/QuotesProgress.vue'
@@ -42,13 +36,20 @@ export default {
   },
   data : function() {
     return {
-      quotes : []
+      quotes: [],
+      error: false
     }
   },
   methods:{
     pushQuote : function(quote){
       if(this.quotes.length<10)
       this.quotes.push(quote);
+    },
+    display_error(){
+      this.error = true
+      window.setTimeout(() => {
+        this.error = false
+      }, 10000)
     },
     remove(event, position){
       event.target.closest('h3').classList.add("hidden")
@@ -63,18 +64,22 @@ export default {
 
 <style>
 #app{
+  width: 90%;
   max-width: 1000px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 h2{
   text-align: center;
 }
 .info{
-  background-color: #ddf0ff;
-  color: #5590aa;
+  background-color: #ffdddd;
+  color: #aa5555;
   padding-top: 1em;
   padding-bottom: 1em;
-  border: 1px solid #acd;
+  border: 1px solid #aa5555;
   border-radius: 3px;
   padding: 10px 40px 0 40px;
 }
@@ -85,9 +90,9 @@ h2{
 .quotes{
   width: 100%;
   margin-bottom: 10px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 .hidden{
   opacity: 0;

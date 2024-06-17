@@ -1,10 +1,7 @@
 <template>
   <div id="main">
-  	<h3>Imyibutsa</h3>
-  	<div>
-  		<textarea v-model="quote"></textarea>
-  	</div>
-  	<div>
+  	<div class="field">
+  		<input type="text" v-model="quote" placeholder="Andikamwo umwibutsa"/>
   		<button v-on:click="addQuote">Ongeramwo</button>
   	</div>
   </div>
@@ -17,36 +14,35 @@ export default {
 		}
 	},
 	methods: { 
-		addQuote : function (){
-			if(this.quote != "")
-			this.$emit("add_quote", this.quote);
-			this.quote = "";
+		addQuote(){
+			console.log(this.quote.split(" ").length)
+			if(this.quote.split(" ").length < 2){
+				this.$emit("error");
+				this.quote = "";
+			} else {
+				this.$emit("add_quote", this.quote);
+				this.quote = "";
+			}
 		}
 	}
 };
 </script>
 <style scoped>
-#main{
-	width: 500px;
-	margin: auto;
-	padding: 5px;
+.field{
+	display: flex;
+	gap: 10px;
 }
-h3{
-	margin: 0;
-}
-textarea{
-	height: 70px;
-	width: 100%;
+input{
+	flex-grow: 1;
+	border: 2px solid #48b;
+	border-radius: 3px;
+	padding: 0 20px;
 }
 button{
-	position: relative;
 	background-color: #48b;
-	padding: 10px 1em;
+	padding: 10px 30px;
 	color: white;
-	border-radius: 5px;
-	border: 1px solid #259;
-	font-weight: bold;
-	left:50%;
-	transform: translate(-50%, 0);
+	border-radius: 3px;
+	border: 0;
 }
 </style>
